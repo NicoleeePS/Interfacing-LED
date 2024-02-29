@@ -1,0 +1,217 @@
+// 4: embedded system development LED toggle
+
+#include "mbed.h"
+//DigitalOut myled(LED1);
+DigitalOut myled(p30);
+int main(){
+	while(1){
+		myled=1;
+		wait(0.2);
+		myled=0;
+		wait(0.2);
+	}
+} 
+
+//PART C
+#include "mbed.h"
+//DigitalOut myled(LED1);
+DigitalOut myled(p30);
+DigitalIn YourSWName(p23);
+int main()
+	{
+		int count = 0;
+		int modulus = 0;
+		modulus = count % 2;
+	while(1)
+	{
+		if(YourSWName == 1 && modulus == 0)
+		{
+			myled=0;
+		}
+		//count++;
+		
+		else if (YourSWName == 1 && modulus != 0)
+		{
+			myled=1;
+		}
+		
+		count++;
+		
+			
+	}
+} 
+
+
+// PART D
+#include "mbed.h"
+//DigitalOut myled(LED1);
+DigitalOut myled(p30);
+DigitalIn YourSWName(p33);
+
+int main(){
+	
+	while(1)
+	{
+		if(YourSWName == 1){
+		myled=1;
+		wait(100);
+		
+	}
+	else {
+		myled=0;
+		wait(100);
+			
+	}
+	}
+	
+} 
+
+//PART D AGAIN
+
+#include "mbed.h"
+DigitalOut myled1(LED1);
+DigitalOut myled(p30);
+DigitalIn YourSWName(p33);
+
+int main(){
+	int count = 2;
+	int modulus = 0;
+
+	while (YourSWName == 1) // button pressed
+	{
+	if(modulus == 0)
+		{
+			myled1=1;
+			myled=0;
+			wait(0.5);
+			count++;
+		}
+	else if (modulus != 0)
+		{
+			myled1=0;
+			myled=1;
+			wait(0.5);
+			count++;
+		}
+		modulus = count % 2;
+	}
+	
+}
+
+//Part d pt.3
+
+#include "mbed.h"
+//DigitalOut myled1(LED1);
+
+
+int main()
+{
+DigitalOut myled(p30);
+DigitalIn my_input(p33);
+	while(1)
+	{
+		if (my_input == 0)
+				myled = !myled;
+		//wait(0.5);
+	}
+	//return 0;
+} 
+
+
+// part d again again
+
+#include "mbed.h"
+//DigitalOut myled1(LED1);
+DigitalOut myled(p30);
+DigitalIn YourSWName(p33);
+
+int main(){
+	int count = 2;
+	int modulus = 0;
+while (1)
+{
+	if (YourSWName == 1) // button pressed
+		{
+		if(modulus == 0)
+			{
+				//myled1=1;
+				myled=1;
+				wait(2);
+				count++;
+			}
+		else if (modulus != 0)
+			{
+				//myled1=0;
+				myled=0;
+				wait(2);
+				count++;
+			}
+			modulus = count % 2;
+		}
+		else if (YourSWName == 0) // button not pressed
+		{
+		if(modulus == 0)
+			{
+				//myled1=1;
+				myled=0;
+				wait(2);
+				//count++;
+			}
+		else if (modulus != 0)
+			{
+				//myled1=0;
+				myled=1;
+				wait(2);
+				//count++;
+			}
+			modulus = count % 2;
+		}
+
+}
+	
+	
+}
+
+
+//PART D (WORKING)
+
+#include "mbed.h"
+//DigitalOut myled1(LED1);
+DigitalOut myled(p30);
+DigitalIn YourSWName(p33);
+
+int main(){
+			myled = 0; // LED is turned off
+	
+			while (1){
+				if (YourSWName == 0){
+						if(myled == 0){
+							myled = 1;// turn on the LED if it is off
+						}
+						else if(myled == 1){
+							myled = 0;// turn off LED if it is on
+						}
+						wait(0.2);
+					}
+				}
+	
+}
+
+//PART E (Working)
+
+#include "mbed.h"
+AnalogOut myled(p18);
+int main(){
+	myled = 0;
+while(1){
+	 if(myled == 0)
+ for(double k =0.5;k<=1;k+=0.01){
+ myled= k;
+ wait(0.2);
+ }
+ for(double k =1;k>=0.5;k-=0.01){
+ myled= k;
+ wait(0.2);
+ }
+} /* end while */
+} /* end main */
